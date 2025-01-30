@@ -1,5 +1,6 @@
 package com.apiControleFinanceiro.ControleFInanceiro.Financeiro.controller;
 
+import com.apiControleFinanceiro.ControleFInanceiro.Financeiro.dto.ResponseFinancialDTO;
 import com.apiControleFinanceiro.ControleFInanceiro.Financeiro.model.Financeiro;
 import com.apiControleFinanceiro.ControleFInanceiro.Financeiro.service.FinanceiroService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +31,11 @@ public class FinanceiroController {
     @GetMapping("/monthYear")
     public List<Financeiro> findByMonthYear(@RequestParam("month") String month, @RequestParam("year") String year) {
         return this.financeiroService.findByMonthYear(month + "/" + year);
+    }
+
+    @GetMapping("/resumoFinanceiro")
+    public ResponseFinancialDTO getResumoFinanceiro(@RequestParam("month") String month, @RequestParam("year") String year) {
+        return financeiroService.getResumoFinanceiro(month + "/" + year);
     }
 
     @PostMapping
